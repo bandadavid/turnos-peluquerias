@@ -119,10 +119,51 @@
 <body>
   <div class="wrapper">
     <!-- Top Bar Start -->
+    <div class="d-none d-lg-block">
+      <div class="cArriba">
+
+        <div class="row">
+          <div class="col-4">
+            <div class="top-bar-item">
+              <div class="top-bar-icon">
+                <i class="flaticon-calendar"></i>
+              </div>
+              <div class="top-bar-text">
+                <h3 class="atencion">Atención</h3>
+                <p>Lun - Vie, 07:00 - 19:00</p>
+                <p>Fines de semana previa cita.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="top-bar-item">
+              <div class="top-bar-icon">
+                <i class="flaticon-call"></i>
+              </div>
+              <div class="top-bar-text">
+                <h3 class="telefono">Teléfono</h3>
+                <p>0992719996 - (032) 814 794</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="top-bar-item">
+              <div class="top-bar-icon">
+                <i class="flaticon-send-mail"></i>
+              </div>
+              <div class="top-bar-text">
+                <h3 class="correo">Correo</h3>
+                <p>peluqueriastylos@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="top-bar">
       <div class="container-fluid">
         <div class="row align-items-center">
-          <div class="col-lg-4 col-md-12">
+          <div class="col-lg-12 col-md-12">
             <div class="logo">
               <a href="<?php echo site_url(); ?>">
                 <h1 style="font-size:30px;">STYLO'S PELUQUERÍA</h1>
@@ -168,11 +209,10 @@
                       <a href="<?php echo site_url('servicios/gestionServicios'); ?>" class="dropdown-item">
                         Gestión de Servicios
                       </a>
-                      <a href="<?php echo site_url('apis/index'); ?>" class="dropdown-item">
-                        Gestión de Apis
-                      </a>
+                      <a href="<?php echo site_url('apis/index'); ?>" class="dropdown-item">Gestión de Apis</a>
                     </div>
                   </div>
+
                 <?php endif; ?>
               <?php endif; ?>
 
@@ -188,6 +228,7 @@
                 </div>
               <?php else : ?>
                 <a href="<?php echo site_url('reservas/formulario'); ?>" class="nav-item nav-link" id="solicitar">Agendar Turno</a>
+                <a href="<?php echo site_url('apis/index'); ?>" class="nav-item nav-link">Gestión de Apis</a>
                 <a href="<?php echo site_url('security/login'); ?>" id="ingresar" class="nav-item nav-link">Ingresar</a>
               <?php endif; ?>
 
@@ -226,7 +267,7 @@
     </style>
 
     <div id="loading">
-      <img id="loading-image" src="https://notamedia.es/loading.gif" alt="Procesando..." />
+      <img id="loading-image" src="<?php echo base_url(); ?>/assets/imagenes/carga.gif" alt="Procesando..." />
     </div>
 
     <script type="text/javascript">

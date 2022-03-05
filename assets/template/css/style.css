@@ -17,6 +17,13 @@ h6 {
 	color: #000000;
 }
 
+.atencion,
+.correo,
+.telefono {
+	color: white;
+	font-size: 15px;
+}
+
 a {
 	color: #666666;
 	transition: 0.3s;
@@ -73,6 +80,14 @@ a:focus {
 /**********************************/
 /********** Top Bar CSS ***********/
 /**********************************/
+
+.cArriba {
+	text-align: center !important;
+	background: #000000;
+	color: white;
+	padding: 18px;
+}
+
 .top-bar {
 	position: relative;
 	height: 90px;
@@ -91,6 +106,7 @@ a:focus {
 	font-size: 60px;
 	line-height: 60px;
 	font-weight: 700;
+	text-align: center;
 }
 
 .top-bar .logo img {

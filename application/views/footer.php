@@ -29,7 +29,7 @@
 
   .fc-title,
   .fc-time {
-    color: black !important;
+    color: white !important;
   }
 
   .fc-more {

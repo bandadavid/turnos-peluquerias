@@ -46,6 +46,12 @@
               </div>
               <div class="row">
                 <div class="col-md-6 form-group">
+                  <input required type="hidden" name="codigo_res" id="codigo_res" class="form-control">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 form-group">
                   <label for=""><b>Apellidos:</b></label><br>
                   <input required type="text" name="apellido_sol" readonly id="apellido_sol" value="" class="form-control" placeholder="Ingrese sus apellidos completos">
                 </div>
@@ -67,13 +73,20 @@
                 </div>
               </div>
 
-
+              <?php if ($this->session->userdata("Conectad0")) : ?>
+                <center>
+                  <a href="<?php echo site_url("reservas/finalizar") ?>" class="btn btn-danger">
+                    <i class="fa fa-times-circle"></i>
+                    FINALIZAR TURNO
+                  </a>
+                </center>
+              <?php endif; ?>
 
               <br>
               <center>
                 <button type="button" class="btn btn-success" data-dismiss="modal">
                   <i class="fa fa-check"></i>
-                  ACEPTAR
+                  CERRAR
                 </button>
               </center>
 
@@ -124,11 +137,12 @@
         success: function(data) {
           $("#btn-enlace").html("");
           var objeto = JSON.parse(data);
+          $("#codigo_res").val(objeto.codigo_res);
           $("#fecha_hora").val(objeto.fecha);
           $("#apellido_sol").val(objeto.apellido_res);
           $("#nombre_sol").val(objeto.nombre_res);
           $("#celular_sol").val(objeto.celular_res);
-          $("#nombre_ser").val(objeto.nombre_ser + " [Duracion del Turno: " + objeto.tiempo_ser + "]");
+          $("#nombre_ser").val(objeto.nombre_ser);
         }
       });
       $("#modalDetalleReunion").modal("show");

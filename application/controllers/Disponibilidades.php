@@ -10,9 +10,7 @@ class Disponibilidades extends CI_Controller
         $this->load->database(); //cargando persistencia
         $this->load->library('Grocery_CRUD'); //cargando crud
         $this->load->model('usuario');
-        if (!$this->session->userdata("Conectad0")) {
-            redirect("security/logout");
-        }
+        $this->load->model('disponibilidad');
     }
 
     public function index()
@@ -55,6 +53,28 @@ class Disponibilidades extends CI_Controller
                 "estado" => "error",
                 "mensaje" => "No existe disponibilidades"
             ));
+        }
+    }
+
+    public function guardarDisponibilidad()
+    {
+        /*$fecha_dis = "2022-03-06";
+        $hora_inicio_dis = "11:0";
+        $hora_fin_dis = "13:0";*/
+
+        $fecha_dis = $this->input->post("fecha_dis");
+        $hora_inicio_dis = $this->input->post("hora_inicio_dis");
+        $hora_fin_dis = $this->input->post("hora_fin_dis");
+
+        $dataNuevoDisponibilidad = array(
+            "fecha_dis" => $fecha_dis,
+            "hora_inicio_dis" => $hora_inicio_dis,
+            "hora_fin_dis" => $hora_fin_dis
+        );
+        if ($this->disponibilidad->insertarDisponibilidad($dataNuevoDisponibilidad)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
         }
     }
 }

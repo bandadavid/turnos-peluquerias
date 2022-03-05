@@ -23,11 +23,12 @@ class Reservas extends CI_Controller
         $reservas->set_table('reserva'); //estableciendo la tabla de l BDD
         $reservas->set_theme('datatables'); //definiendo al aspeto grafico
         $reservas->set_relation('fk_codigo_ser', 'servicios', 'nombre_ser');
-        $reservas->columns('codigo_res', 'fecha_hora_inicio_res', 'apellido_res', 'nombre_res', 'celular_res', 'fk_codigo_ser');
+        $reservas->columns('codigo_res', 'fecha_hora_inicio_res', 'apellido_res', 'nombre_res', 'celular_res', 'fk_codigo_ser', 'estado_res');
         $reservas->display_as('codigo_res', '#');
         $reservas->display_as('apellido_res', 'Apellido');
         $reservas->display_as('nombre_res', 'Nombre');
         $reservas->display_as('celular_res', 'Celular');
+        $reservas->display_as('estado_res', 'Estado');
         $reservas->display_as('fk_codigo_ser', 'Servicio');
 
 
@@ -35,29 +36,13 @@ class Reservas extends CI_Controller
         $reservas->set_theme("flexigrid");
 
         $reservas->unset_clone();
+        $reservas->field_type('estado_res', 'dropdown', array("ACTIVO" => "ACTIVO", "FINALIZADO" => "FINALIZADO"));
 
         $output = $reservas->render();
         $this->load->view('header');
         $this->load->view('reservas/gestionReservas', $output);
         $this->load->view('footer');
     }
-
-    /*function __construct()
-    {
-        parent::__construct(); //invocando al constructor de la clase padre
-        $this->load->database(); //cargando persistencia
-        $this->load->library('Grocery_CRUD'); //cargando crud
-        $this->load->model('usuario');
-        $this->load->model('disponibilidad');
-        $this->load->model('reserva');
-    }*/
-
-    /*public function index()
-    {
-        $this->load->view('header');
-        $this->load->view('reservas/index', $output);
-        $this->load->view('footer');
-    }*/
 
     public function formulario()
     {
@@ -76,37 +61,6 @@ class Reservas extends CI_Controller
         $this->load->view('footer');
     }
 
-
-    /*public function gestionarReuniones()
-    {
-        if (!$this->session->userdata("Conectad0")) {
-            redirect("security/logout");
-        }
-        $data["solicitudes"] = $this->reserva->obtenerTodos();
-        $this->load->view('header');
-        $this->load->view('reservas/gestionarReuniones', $data);
-        $this->load->view('footer');
-    }*/
-
-    /*public function actualizarSolicitud()
-    {
-        $codigo_sol = $this->input->post("codigo_sol");
-        $solicitud = $this->reserva->obtenerPorCodigo($codigo_sol);
-        $enlace_reunion_sol = $this->input->post("enlace_reunion_sol");
-        if ($this->reserva->actualizarSolicitud($codigo_sol, array("enlace_reunion_sol" => $enlace_reunion_sol))) {
-            enviarEmail(
-                $solicitud->email_sol,
-                "CONFIRMACIÓN",
-                "Estimado Ciudadano, la reunion solicitada para el: <b>" . convertirFechaLetras($solicitud->fecha_hora_inicio_sol) . "</b>
-      ha sido ACEPTADA y podrá acceder mediante el siguiente enlace: <br><i style='color:blue;'>" . $enlace_reunion_sol . "</i>",
-                ""
-            );
-            $estado = array("estado" => "ok");
-        } else {
-            $estado = array("estado" => "error");
-        }
-        echo json_encode($estado);
-    }*/
 
     public function insertarReserva()
     {
@@ -130,6 +84,21 @@ class Reservas extends CI_Controller
             redirect("reservas/calendario");
         } else {
             $this->session->set_flashdata("error", "El horario seleccionado ya no están disponibles, verifique e intente nuevamente.");
+            redirect("reservas/formulario");
+        }
+    }
+
+    public function finalizar()
+    {
+        $codigo = $this->input->post("codigo_res");
+        $datosFinalizacion = array(
+            "estado_res" => "FINALIZADO"
+        );
+        if ($this->reserva->actualizar($codigo, $datosFinalizacion)) {
+            $this->session->set_flashdata("confirmacion", "Turno Finalizado Existosamente.");
+            redirect("reservas/calendario");
+        } else {
+            $this->session->set_flashdata("error", "No se pudo finalizar el turno.");
             redirect("reservas/formulario");
         }
     }
@@ -167,6 +136,35 @@ class Reservas extends CI_Controller
                 "estado" => "error",
                 "mensaje" => "No existe reservas"
             ));
+        }
+    }
+
+    public function guardarReserva()
+    {
+        /*$fechaInicio = "2022-03-06 17:30:00";
+        $apellido = "Ruiz";
+        $nombre = "David";
+        $celular = "0987654321";
+        $servicio = "1";*/
+
+
+        $fechaInicio = $this->input->post("fecha_hora_inicio_sol");
+        $apellido = $this->input->post("apellido_sol");
+        $nombre = $this->input->post("nombre_sol");
+        $celular = $this->input->post("celular_sol");
+        $servicio = $this->input->post("nombre_ser");
+
+        $dataNuevoReserva = array(
+            "fecha_hora_inicio_res" => $fechaInicio,
+            "apellido_res" => $apellido,
+            "nombre_res" => $nombre,
+            "celular_res" => $celular,
+            "fk_codigo_ser" => $servicio
+        );
+        if ($this->reserva->insertarReserva($dataNuevoReserva)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
         }
     }
 }

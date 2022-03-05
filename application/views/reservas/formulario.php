@@ -124,14 +124,12 @@ $turnosDisponibles = array_values(array_unique($turnosDisponibles));
                       <option value="" selected disabled hidden>Escoge el servicio que necesite</option>
                       <?php if ($servicios) : ?>
                         <?php foreach ($servicios->result() as $servicio) : ?>
-                          <option value="<?php echo $servicio->codigo_ser; ?>"><?php echo $servicio->nombre_ser; ?> [Duracion del servicio: <?php echo $servicio->tiempo_ser; ?>]</option>
+                          <option value="<?php echo $servicio->codigo_ser; ?>"><?php echo $servicio->nombre_ser; ?></option>
                         <?php endforeach; ?>
                       <?php endif; ?>
                     </select>
                   </div>
                 </div>
-
-
 
                 <br>
                 <center>

@@ -29,4 +29,10 @@ class Disponibilidad  extends CI_Model
             return false;
         }
     }
+
+
+    public function insertarDisponibilidad($dataDisponibilidad)
+    {
+        return $this->db->insert("disponibilidad", $dataDisponibilidad);
+    }
 }

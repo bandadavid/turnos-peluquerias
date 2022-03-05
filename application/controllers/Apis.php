@@ -8,9 +8,6 @@ class Apis extends CI_Controller
     {
         parent::__construct(); //invocando al constructor de la clase padre
         $this->load->model('usuario');
-        if (!$this->session->userdata("Conectad0")) {
-            redirect("security/logout");
-        }
     }
 
     public function index()

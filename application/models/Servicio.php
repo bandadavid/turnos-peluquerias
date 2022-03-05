@@ -18,4 +18,9 @@ class Servicio  extends CI_Model
             return false;
         }
     }
+
+    public function insertarServicio($dataServicio)
+    {
+        return $this->db->insert("servicios", $dataServicio);
+    }
 }

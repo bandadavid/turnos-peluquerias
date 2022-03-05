@@ -14,12 +14,12 @@ class Reserva  extends CI_Model
         }
     }
 
-    function insertarReserva($data)
+    function insertarReserva($dataReserva)
     {
-        return $this->db->insert("reserva", $data);
+        return $this->db->insert("reserva", $dataReserva);
     }
 
-    function actualizarReserva($codigo_sol, $data)
+    public function actualizar($codigo_sol, $data)
     {
         $this->db->where("codigo_res", $codigo_sol);
         return $this->db->update("reserva", $data);

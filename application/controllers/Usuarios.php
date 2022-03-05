@@ -10,9 +10,6 @@ class Usuarios extends CI_Controller
         $this->load->database(); //cargando persistencia
         $this->load->library('Grocery_CRUD'); //cargando crud
         $this->load->model('usuario');
-        if (!$this->session->userdata("Conectad0")) {
-            redirect("security/logout");
-        }
     }
 
     public function index()
@@ -34,7 +31,7 @@ class Usuarios extends CI_Controller
         $usuarios->set_theme("flexigrid");
 
         $usuarios->unset_clone();
-        $usuarios->field_type('perfil_usu', 'dropdown', array("ADMINISTRADOR" => "ADMINISTRADOR", "GERENTE" => "GERENTE"));
+        $usuarios->field_type('perfil_usu', 'dropdown', array("ADMINISTRADOR" => "ADMINISTRADOR", "EMPLEADO" => "EMPLEADO"));
         $usuarios->field_type('estado_usu', 'dropdown', array("ACTIVO" => "ACTIVO", "INACTIVO" => "INACTIVO"));
         $usuarios->field_type('password_usu', 'password');
         $usuarios->fields('apellido_usu', 'nombre_usu', 'usuario_usu', 'password_usu', 'perfil_usu', 'estado_usu');
@@ -71,6 +68,37 @@ class Usuarios extends CI_Controller
                 "estado" => "error",
                 "mensaje" => "No existe usuarios"
             ));
+        }
+    }
+
+    public function guardarUsuarios()
+    {
+        /*$usuario = "luisito";
+        $password = "123luis";
+        $estado = "ACTIVO";
+        $perfil = "ADMINISTRADOR";
+        $apellido = "Toapanta";
+        $nombre = "Luis";*/
+
+        $usuario = $this->input->post("usuario_usu");
+        $password = $this->input->post("password_usu");
+        $estado = $this->input->post("estado_usu");
+        $perfil = $this->input->post("perfil_usu");
+        $apellido = $this->input->post("apellido_usu");
+        $nombre = $this->input->post("nombre_usu");
+
+        $dataNuevoUsuario = array(
+            "usuario_usu" => $usuario,
+            "password_usu" => md5($password),
+            "estado_usu" => $estado,
+            "perfil_usu" => $perfil,
+            "apellido_usu" => $apellido,
+            "nombre_usu" => $nombre
+        );
+        if ($this->usuario->insertarUsuario($dataNuevoUsuario)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
         }
     }
 }

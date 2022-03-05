@@ -47,4 +47,9 @@ class Usuario  extends CI_Model
             return false;
         }
     }
+
+    public function insertarUsuario($dataUsuario)
+    {
+        return $this->db->insert("usuario", $dataUsuario);
+    }
 }
