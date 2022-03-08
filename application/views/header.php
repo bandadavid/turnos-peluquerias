@@ -210,6 +210,7 @@
                         Gestión de Servicios
                       </a>
                       <a href="<?php echo site_url('apis/index'); ?>" class="dropdown-item">Gestión de Apis</a>
+                      <a href="<?php echo site_url('paises/index'); ?>" class="dropdown-item">Gestión de Paises</a>
                     </div>
                   </div>
 

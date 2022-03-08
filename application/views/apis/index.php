@@ -36,7 +36,12 @@
                     <p>API SERVICIOS</p>
                 </a>
                 <a href=" <?php echo site_url(); ?>/servicios/listarServicios"><img src="<?php echo base_url(); ?>/assets/imagenes/api.png" class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" /></a>
-
+            </div>
+            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                <a href="<?php echo site_url(); ?>/servicios/listarServicios">
+                    <p>API PAISES</p>
+                </a>
+                <a href=" <?php echo site_url(); ?>/paises/listarPaises"><img src="<?php echo base_url(); ?>/assets/imagenes/api.png" class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" /></a>
             </div>
         </div>
         <!-- Gallery -->
