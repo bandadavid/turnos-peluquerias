@@ -228,7 +228,6 @@
                 </div>
               <?php else : ?>
                 <a href="<?php echo site_url('reservas/formulario'); ?>" class="nav-item nav-link" id="solicitar">Agendar Turno</a>
-                <a href="<?php echo site_url('apis/index'); ?>" class="nav-item nav-link">Gestión de Apis</a>
                 <a href="<?php echo site_url('security/login'); ?>" id="ingresar" class="nav-item nav-link">Ingresar</a>
               <?php endif; ?>
 

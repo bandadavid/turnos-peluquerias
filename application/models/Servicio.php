@@ -40,4 +40,10 @@ class Servicio  extends CI_Model
             return false;
         }
     }
+
+    public function actualizar($data, $codigo_ser)
+    {
+        $this->db->where("codigo_ser", $codigo_ser);
+        return $this->db->update("servicios", $data);
+    }
 }
