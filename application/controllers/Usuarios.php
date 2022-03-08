@@ -101,4 +101,44 @@ class Usuarios extends CI_Controller
             echo json_encode(array("estado" => "error"));
         }
     }
+
+    public function editarUsuarios($id)
+    {
+        /*$id = "12";
+        $usuario = "Luisito";
+        //$password = "123luis";
+        $estado = "ACTIVO";
+        //$perfil = "ADMINISTRADOR";
+        $apellido = "Iza";
+        $nombre = "Rafel";*/
+
+        $usuario = $this->input->post("usuario_usu");
+        //$password = $this->input->post("password_usu");
+        $estado = $this->input->post("estado_usu");
+        //$perfil = $this->input->post("perfil_usu");
+        $apellido = $this->input->post("apellido_usu");
+        $nombre = $this->input->post("nombre_usu");
+
+        $dataNuevoUsuario = array(
+            "usuario_usu" => $usuario,
+            "estado_usu" => $estado,
+            "apellido_usu" => $apellido,
+            "nombre_usu" => $nombre
+        );
+        if ($this->usuario->actualizar($dataNuevoUsuario, $id)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
+        }
+    }
+
+    public function eliminarUsuarios($id)
+    {
+        $this->usuario->obtenerPorCodigo($id);
+        if ($this->usuario->eliminar($id)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
+        }
+    }
 }

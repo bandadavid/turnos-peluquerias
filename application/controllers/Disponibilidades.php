@@ -77,4 +77,36 @@ class Disponibilidades extends CI_Controller
             echo json_encode(array("estado" => "error"));
         }
     }
+
+    public function eliminarDisponibilidad($id)
+    {
+        $this->disponibilidad->obtenerPorCodigo($id);
+        if ($this->disponibilidad->eliminar($id)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
+        }
+    }
+
+    public function editarDisponibilidad($id)
+    {
+        /*$fecha_dis = "2022-03-06";
+        $hora_inicio_dis = "11:0";
+        $hora_fin_dis = "13:0";*/
+        //$id = $this->input->post("codigo_dis");
+        $fecha_dis = $this->input->post("fecha_dis");
+        $hora_inicio_dis = $this->input->post("hora_inicio_dis");
+        $hora_fin_dis = $this->input->post("hora_fin_dis");
+
+        $dataNuevoDisponibilidad = array(
+            "fecha_dis" => $fecha_dis,
+            "hora_inicio_dis" => $hora_inicio_dis,
+            "hora_fin_dis" => $hora_fin_dis
+        );
+        if ($this->disponibilidad->actualizar($dataNuevoDisponibilidad, $id)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
+        }
+    }
 }

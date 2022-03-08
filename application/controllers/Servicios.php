@@ -83,4 +83,40 @@ class Servicios extends CI_Controller
             echo json_encode(array("estado" => "error"));
         }
     }
+
+    public function editarServicios()
+    {
+        /*$nombre = "Pintado de Unas";
+        $descripcion = "Pintado de unas";
+        $precio = "3.50";
+        $foto = "foto.png";*/
+        $id = $this->input->post("codigo_res");
+        $nombre = $this->input->post("nombre_ser");
+        $descripcion = $this->input->post("descripcion_ser");
+        $precio = $this->input->post("precio_ser");
+        $foto = $this->input->post("foto_ser");
+
+        //SUBIR ARCHIVO
+        $dataNuevoServicio = array(
+            "nombre_ser" => $nombre,
+            "descripcion_ser" => $descripcion,
+            "precio_ser" => $precio,
+            "foto_ser" => $foto
+        );
+        if ($this->servicio->actualizar($dataNuevoServicio, $id)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
+        }
+    }
+
+    public function eliminarServicios($id)
+    {
+        $this->servicio->obtenerPorCodigo($id);
+        if ($this->servicio->eliminar($id)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
+        }
+    }
 }

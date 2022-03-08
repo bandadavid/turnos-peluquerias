@@ -19,9 +19,9 @@ class Reserva  extends CI_Model
         return $this->db->insert("reserva", $dataReserva);
     }
 
-    public function actualizar($codigo_sol, $data)
+    public function actualizar($data, $codigo_res)
     {
-        $this->db->where("codigo_res", $codigo_sol);
+        $this->db->where("codigo_res", $codigo_res);
         return $this->db->update("reserva", $data);
     }
 
@@ -57,5 +57,11 @@ class Reserva  extends CI_Model
         } else {
             return false;
         }
+    }
+
+    public function eliminar($id)
+    {
+        $this->db->where("codigo_res", $id);
+        return $this->db->delete("reserva");
     }
 }

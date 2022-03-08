@@ -167,4 +167,44 @@ class Reservas extends CI_Controller
             echo json_encode(array("estado" => "error"));
         }
     }
+
+    public function editarReserva($id)
+    {
+        /*$fechaInicio = "2022-03-06 17:30:00";
+        $apellido = "Ruiz";
+        $nombre = "David";
+        $celular = "0987654321";
+        $servicio = "1";*/
+
+        //$id = $this->input->post("codigo_sol");
+        //$fechaInicio = $this->input->post("fecha_hora_inicio_sol");
+        $apellido = $this->input->post("apellido_res");
+        $nombre = $this->input->post("nombre_res");
+        $celular = $this->input->post("celular_res");
+        $estado = $this->input->post("estado_res");
+        $servicio = $this->input->post("fk_codigo_ser");
+
+        $dataNuevoReserva = array(
+            "apellido_res" => $apellido,
+            "nombre_res" => $nombre,
+            "celular_res" => $celular,
+            "estado_res" => $estado,
+            "fk_codigo_ser" => $servicio
+        );
+        if ($this->reserva->actualizar($dataNuevoReserva, $id)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
+        }
+    }
+
+    public function aliminarReservas($id)
+    {
+        $this->reserva->obtenerPorCodigo($id);
+        if ($this->reserva->eliminar($id)) {
+            echo json_encode(array("estado" => "ok"));
+        } else {
+            echo json_encode(array("estado" => "error"));
+        }
+    }
 }

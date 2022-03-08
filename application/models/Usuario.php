@@ -52,4 +52,10 @@ class Usuario  extends CI_Model
     {
         return $this->db->insert("usuario", $dataUsuario);
     }
+
+    public function eliminar($id)
+    {
+        $this->db->where("codigo_usu", $id);
+        return $this->db->delete("usuario");
+    }
 }
