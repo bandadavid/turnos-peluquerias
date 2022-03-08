@@ -57,8 +57,8 @@ class Paises extends CI_Controller
         $precio = "3.50";
         $foto = "foto.png";*/
 
-        $nombre = $this->input->post("nombre_ser");
-        $continente = $this->input->post("descripcion_ser");
+        $nombre = $this->input->post("nombre_bd");
+        $continente = $this->input->post("continente_bd");
 
 
         //SUBIR ARCHIVO
