@@ -27,93 +27,94 @@
   <div class="modal-dialog" style="min-width:90% !important;">
 
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"> <i class="fa fa-eye"></i> <b>Detalle del Turno</b></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-8 form-group">
-                  <input type="hidden" name="fecha_hora_inicio_sol" id="fecha_hora_inicio_sol" value="">
-                  <input type="hidden" name="fecha_hora_fin_sol" id="fecha_hora_fin_sol" value="">
-                  <label for=""><b>Fecha y Hora del Turno:</b></label><br>
-                  <input type="text" name="" id="fecha_hora" value="" readonly class="form-control">
+    <form id="frm_editar_convenio" method="post" action="<?php echo site_url(); ?>/calendarios/finalizar/" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"> <i class="fa fa-eye"></i> <b>Detalle del Turno</b></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-8 form-group">
+                    <input type="hidden" name="fecha_hora_inicio_sol" id="fecha_hora_inicio_sol" value="">
+                    <input type="hidden" name="fecha_hora_fin_sol" id="fecha_hora_fin_sol" value="">
+                    <label for=""><b>Fecha y Hora del Turno:</b></label><br>
+                    <input type="text" name="" id="fecha_hora" value="" readonly class="form-control">
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input required type="hidden" name="codigo_res" id="codigo_res" class="form-control">
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label for=""><b>Apellidos:</b></label><br>
-                  <input required type="text" name="apellido_sol" readonly id="apellido_sol" value="" class="form-control" placeholder="Ingrese sus apellidos completos">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for=""><b>Nombres:</b></label><br>
-                  <input required type="text" name="nombre_sol" readonly id="nombre_sol" value="" class="form-control" placeholder="Ingrese sus nombres completos">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input required type="hidden" name="codigo_res" id="codigo_res" class="form-control">
+                  </div>
                 </div>
 
-              </div>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for=""><b>Apellidos:</b></label><br>
+                    <input required type="text" name="apellido_sol" readonly id="apellido_sol" value="" class="form-control" placeholder="Ingrese sus apellidos completos">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for=""><b>Nombres:</b></label><br>
+                    <input required type="text" name="nombre_sol" readonly id="nombre_sol" value="" class="form-control" placeholder="Ingrese sus nombres completos">
+                  </div>
 
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label for=""><b>Celular:</b></label><br>
-                  <input required type="number" name="celular_sol" readonly id="celular_sol" value="" class="form-control" placeholder="Ingrese su número de celular">
                 </div>
-                <div class="col-md-6 form-group">
-                  <label for=""><b>Servicio:</b></label><br>
-                  <input required type="text" name="nombre_ser" readonly id="nombre_ser" value="" class="form-control" placeholder="Ingrese sus nombres completos">
-                </div>
-              </div>
 
-              <?php if ($this->session->userdata("Conectad0")) : ?>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for=""><b>Celular:</b></label><br>
+                    <input required type="number" name="celular_sol" readonly id="celular_sol" value="" class="form-control" placeholder="Ingrese su número de celular">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for=""><b>Servicio:</b></label><br>
+                    <input required type="text" name="nombre_ser" readonly id="nombre_ser" value="" class="form-control" placeholder="Ingrese sus nombres completos">
+                  </div>
+                </div>
+
+                <?php if ($this->session->userdata("Conectad0")) : ?>
+                  <center>
+                    <button type="submit" class="btn btn-danger">
+                      <i class="fa fa-window-close"></i>
+                      FINALIZAR TURNO
+                    </button>
+                  </center>
+                <?php endif; ?>
+
+                <br>
                 <center>
-                  <a href="<?php echo site_url("reservas/finalizar") ?>" class="btn btn-danger">
-                    <i class="fa fa-times-circle"></i>
-                    FINALIZAR TURNO
-                  </a>
+                  <button type="button" class="btn btn-success" data-dismiss="modal">
+                    <i class="fa fa-check"></i>
+                    CERRAR
+                  </button>
                 </center>
-              <?php endif; ?>
 
-              <br>
-              <center>
-                <button type="button" class="btn btn-success" data-dismiss="modal">
-                  <i class="fa fa-check"></i>
-                  CERRAR
-                </button>
-              </center>
-
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 
-
 <script type="text/javascript">
   var listadoEventos = [
-
     <?php if ($solicitudes) : ?>
-      <?php foreach ($solicitudes->result() as $solicitud) : ?> {
-          id: '<?php echo $solicitud->codigo_res; ?>',
-          title: '<?php echo $solicitud->apellido_res; ?> <?php echo $solicitud->nombre_res; ?>',
-          start: '<?php echo $solicitud->fecha_hora_inicio_res; ?>',
-          end: '<?php echo $solicitud->fecha_hora_inicio_res; ?>',
-        },
+      <?php foreach ($solicitudes->result() as $solicitud) : ?>
+        <?php if ($solicitud->estado_res == "ACTIVO") : ?> {
+            id: '<?php echo $solicitud->codigo_res; ?>',
+            title: '<?php echo $solicitud->apellido_res; ?> <?php echo $solicitud->nombre_res; ?>',
+            start: '<?php echo $solicitud->fecha_hora_inicio_res; ?>',
+            end: '<?php echo $solicitud->fecha_hora_inicio_res; ?>',
+          },
+        <?php endif; ?>
       <?php endforeach; ?>
     <?php endif; ?>
-
-
   ];
+
   $('#calendar').fullCalendar({
     header: {
       left: 'prev,next',
@@ -146,7 +147,6 @@
         }
       });
       $("#modalDetalleReunion").modal("show");
-
     },
     dayClick: function(date, allDay, jsEvent, view) {
 

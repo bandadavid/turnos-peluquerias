@@ -32,5 +32,8 @@ foreach ($css_files as $file) : ?>
     $(document).ready(function() {
         $("#field-hora_inicio_dis").prop("type", "time");
         $("#field-hora_fin_dis").prop("type", "time");
+
+        $('.error').closest('tr').css('background-color', '#FFC3C0');
+        $('.success').closest('tr').css('background-color', '#7ee19a');
     });
 </script>

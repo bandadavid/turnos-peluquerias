@@ -35,13 +35,22 @@ class Reservas extends CI_Controller
         $reservas->set_language("spanish");
         $reservas->set_theme("flexigrid");
 
+        // $reservas->callback_column('estado_res', array($this, 'cambiarColorCelda'));
+
         $reservas->unset_clone();
         $reservas->field_type('estado_res', 'dropdown', array("ACTIVO" => "ACTIVO", "FINALIZADO" => "FINALIZADO"));
 
         $output = $reservas->render();
+
         $this->load->view('header');
         $this->load->view('reservas/gestionReservas', $output);
         $this->load->view('footer');
+    }
+
+    public function cambiarColorCelda($value, $row)
+    {
+        return "<div class='" . ($value == 'ACTIVO' ? 'bg-success' : 'bg-danger') . "'>$value</div>";
+        //return '<span style="background:red; color: #fff;"><span>' . $row->estado_res;
     }
 
     public function formulario()
@@ -64,14 +73,6 @@ class Reservas extends CI_Controller
 
     public function insertarReserva()
     {
-        /*$cedula = $this->input->post("cedula_sol");
-        $fecha = $this->input->post("fecha_hora_fin_sol");*/
-        /*$solicitudExistente = $this->reserva->obtenerSolicitudPorCedulaFecha($cedula, $fecha);
-        if ($solicitudExistente) {
-            $this->session->set_flashdata("error", "Estimado ciudadano usted ya tiene agendada una reunión para el día seleccionado. Recuerde que solamente puede agendar una reunión por día.");
-            redirect('reservas/formulario');
-        }*/
-
         $data = array(
             "fecha_hora_inicio_res" => $this->input->post("fecha_hora_inicio_sol"),
             "apellido_res" => $this->input->post("apellido_sol"),
@@ -90,11 +91,12 @@ class Reservas extends CI_Controller
 
     public function finalizar()
     {
+        $estado = "8999";
         $codigo = $this->input->post("codigo_res");
         $datosFinalizacion = array(
-            "estado_res" => "FINALIZADO"
+            "celular_res" => $estado
         );
-        if ($this->reserva->actualizar($codigo, $datosFinalizacion)) {
+        if ($this->reserva->actualizar($datosFinalizacion, $codigo)) {
             $this->session->set_flashdata("confirmacion", "Turno Finalizado Existosamente.");
             redirect("reservas/calendario");
         } else {
