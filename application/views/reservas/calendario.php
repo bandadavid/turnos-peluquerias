@@ -106,9 +106,11 @@
       <?php foreach ($solicitudes->result() as $solicitud) : ?>
         <?php if ($solicitud->estado_res == "ACTIVO") : ?> {
             id: '<?php echo $solicitud->codigo_res; ?>',
-            title: '<?php echo $solicitud->apellido_res; ?> <?php echo $solicitud->nombre_res; ?>',
+            title: 'Turno agendado para <?php echo $solicitud->apellido_res; ?> <?php echo $solicitud->nombre_res; ?>',
             start: '<?php echo $solicitud->fecha_hora_inicio_res; ?>',
             end: '<?php echo $solicitud->fecha_hora_inicio_res; ?>',
+            color: "#9f1815",
+            eventTextColor: "#FFF"
           },
         <?php endif; ?>
       <?php endforeach; ?>

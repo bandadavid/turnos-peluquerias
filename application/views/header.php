@@ -11,6 +11,7 @@
   <!-- Favicon -->
   <link href="https://m.media-amazon.com/images/I/71XzVkYRp9L._AC_SX425_.jpg" rel="icon">
 
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -120,7 +121,7 @@
   <div class="wrapper">
     <!-- Top Bar Start -->
     <div class="d-none d-lg-block">
-      <div class="cArriba">
+      <!-- <div class="cArriba">
 
         <div class="row">
           <div class="col-4">
@@ -131,7 +132,6 @@
               <div class="top-bar-text">
                 <h3 class="atencion">Atención</h3>
                 <p>Lun - Vie, 07:00 - 19:00</p>
-                <p>Fines de semana previa cita.</p>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="top-bar">
       <div class="container-fluid">
@@ -180,37 +180,36 @@
     <div class="nav-bar">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-          <a href="#" class="navbar-brand">MENU</a>
+          <a href="#" class="navbar-brand"><b>MENU</b></a>
           <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
           </button>
-
           <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav mr-auto">
-              <a href="<?php echo site_url(); ?>" id="menu_inicio" class="nav-item nav-link">Inicio</a>
-              <a href="<?php echo site_url(); ?>/reservas/calendario" id="calendario" class="nav-item nav-link">Calendario De Turnos</a>
+              <a href="<?php echo site_url(); ?>" id="menu_inicio" class="nav-item nav-link"><i class="fa fa-home"></i>&nbsp;&nbsp;Inicio&nbsp;&nbsp;</a>
+              <a href="<?php echo site_url(); ?>/reservas/calendario" id="calendario" class="nav-item nav-link"><i class="fas fa-calendar-check"></i>&nbsp;&nbsp;Calendario De Turnos&nbsp;&nbsp;</a>
 
               <?php if ($this->session->userdata('Conectad0')) : ?>
                 <?php if ($this->session->userdata('Conectad0')->perfil_usu == "ADMINISTRADOR") : ?>
                   <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="administracion">
-                      ADMINISTRACIÓN
+                      <i class="fas fa-user-shield"></i>&nbsp;&nbsp;ADMINISTRACIÓN&nbsp;&nbsp;
                     </a>
                     <div class="dropdown-menu">
                       <a href="<?php echo site_url('usuarios/index'); ?>" class="dropdown-item">
-                        Gestión de Usuarios
+                        <i class="fas fa-user-cog"></i>&nbsp;&nbsp;Gestión de Usuarios&nbsp;&nbsp;
                       </a>
                       <a href="<?php echo site_url('disponibilidades/index'); ?>" class="dropdown-item">
-                        Gestión de Disponibilidad
+                        <i class="fas fa-clock"></i>&nbsp;&nbsp;Gestión de Disponibilidad&nbsp;&nbsp;
                       </a>
                       <a href="<?php echo site_url('reservas/gestionReservas'); ?>" class="dropdown-item">
-                        Gestión de Turnos
+                        <i class="fas fa-calendar-check"></i>&nbsp;&nbsp;Gestión de Turnos&nbsp;&nbsp;
                       </a>
                       <a href="<?php echo site_url('servicios/gestionServicios'); ?>" class="dropdown-item">
-                        Gestión de Servicios
+                        <i class="fas fa-concierge-bell"></i>&nbsp;&nbsp;Gestión de Servicios&nbsp;&nbsp;
                       </a>
-                      <a href="<?php echo site_url('apis/index'); ?>" class="dropdown-item">Gestión de Apis</a>
-                      <a href="<?php echo site_url('paises/index'); ?>" class="dropdown-item">Gestión de Paises</a>
+                      <!-- <a href="<?php echo site_url('apis/index'); ?>" class="dropdown-item">Gestión de Apis</a> -->
+
                     </div>
                   </div>
 
@@ -220,16 +219,16 @@
               <?php if ($this->session->userdata('Conectad0')) : ?>
                 <div class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    CONECTADO: <?php echo $this->session->userdata('Conectad0')->nombre_usu; ?> <?php echo $this->session->userdata('Conectad0')->apellido_usu; ?>
+                    <i class="fas fa-plug"></i>&nbsp;&nbsp;CONECTADO:&nbsp;&nbsp;<?php echo $this->session->userdata('Conectad0')->nombre_usu; ?> <?php echo $this->session->userdata('Conectad0')->apellido_usu; ?>
                   </a>
                   <div class="dropdown-menu">
-                    <a href="<?php echo site_url('security/perfil'); ?>" class="dropdown-item">Cambiar Contraseña</a>
-                    <a href="<?php echo site_url('security/logout'); ?>" onclick="return confirm('¿Está seguro de salir del sistema?');" class="dropdown-item">Salir</a>
+                    <a href="<?php echo site_url('security/perfil'); ?>" class="dropdown-item"><i class="fas fa-key"></i>&nbsp;&nbsp;Cambiar Contraseña&nbsp;&nbsp;</a>
+                    <a href="<?php echo site_url('security/logout'); ?>" onclick="return confirm('¿Está seguro de salir del sistema?');" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Salir&nbsp;&nbsp;</a>
                   </div>
                 </div>
               <?php else : ?>
-                <a href="<?php echo site_url('reservas/formulario'); ?>" class="nav-item nav-link" id="solicitar">Agendar Turno</a>
-                <a href="<?php echo site_url('security/login'); ?>" id="ingresar" class="nav-item nav-link">Ingresar</a>
+                <a href="<?php echo site_url('reservas/formulario'); ?>" class="nav-item nav-link" id="solicitar"><i class="fa fa-calendar-plus"></i>&nbsp;&nbsp;Agendar Turno&nbsp;&nbsp;</a>
+                <a href="<?php echo site_url('security/login'); ?>" id="ingresar" class="nav-item nav-link"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Ingresar&nbsp;&nbsp;</a>
               <?php endif; ?>
 
             </div>
@@ -263,6 +262,55 @@
 
       #loading-image {
         z-index: 99999 !important;
+      }
+
+      .navbar-dark .navbar-brand {
+        color: #191919 !important;
+      }
+
+      .navbar-dark .navbar-toggler {
+        background-color: #191919;
+      }
+
+      .navbar-dark .navbar-nav .nav-link:hover,
+      .navbar-dark .navbar-nav .nav-link.active {
+        background-color: #191919;
+        color: #fff;
+        border-radius: 5px;
+      }
+
+      .nav-item {
+        margin-right: 20px;
+      }
+
+
+      .navbar-dark .navbar-nav .show>.nav-link {
+        background-color: #191919;
+        color: #fff;
+      }
+
+
+      .navbar-dark .navbar-nav .show {
+        color: #191919 !important;
+      }
+
+      .dropdown-menu.show:hover {
+        color: #fff;
+      }
+
+      .dropdown-item.active,
+      .dropdown-item:active {
+        background-color: #191919 !important;
+      }
+
+      .dropdown-item.active,
+      .dropdown-item:hover {
+        background-color: #191919 !important;
+        color: #fff;
+      }
+
+      .mr-auto {
+        margin-left: 10px;
       }
     </style>
 

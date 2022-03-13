@@ -2,8 +2,6 @@
     $("#administracion").addClass("active");
 </script>
 
-
-
 <?php
 foreach ($css_files as $file) : ?>
     <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
@@ -32,8 +30,30 @@ foreach ($css_files as $file) : ?>
     $(document).ready(function() {
         $("#field-hora_inicio_dis").prop("type", "time");
         $("#field-hora_fin_dis").prop("type", "time");
-
-        $('.error').closest('tr').css('background-color', '#FFC3C0');
-        $('.success').closest('tr').css('background-color', '#7ee19a');
     });
 </script>
+
+<style>
+    .bg-danger {
+        color: white !important;
+        font-weight: bold;
+        background-color: #e85759 !important;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .bg-success {
+        color: white !important;
+        font-weight: bold;
+        background-color: #008c4d !important;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .whatsapp {
+        text-align: center;
+    }
+
+    .fab {
+        font-size: 22px;
+        color: #3ade57;
+    }
+</style>

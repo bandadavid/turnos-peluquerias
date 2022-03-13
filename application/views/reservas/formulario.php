@@ -161,14 +161,14 @@ $turnosDisponibles = array_values(array_unique($turnosDisponibles));
     <?php if (sizeof($turnosDisponibles) > 0) : ?>
       <?php for ($i = 0; $i < sizeof($turnosDisponibles); $i++) { ?>
         <?php $solicitudExistente = $CI->reserva->obtenerReservaPorFechaHora($turnosDisponibles[$i]); ?>
-        <?php if ($turnosDisponibles[$i] > $fechaHoraHoy && !$solicitudExistente) : ?>
+        <?php if ($turnosDisponibles[$i] > $fechaHoraHoy || $turnosDisponibles[$i] < $fechaHoraHoy && !$solicitudExistente) : ?>
           <?php $horaFinalAuxiliar = date('Y-m-d H:i:s', strtotime($turnosDisponibles[$i] . ' +' . $tiempo . ' minutes')); ?> {
             id: '<?php echo 1; ?>',
-            title: 'Hora Disponible',
+            title: 'Turno Disponible',
             start: '<?php echo $turnosDisponibles[$i]; ?>',
             end: '<?php echo $horaFinalAuxiliar; ?>',
-            color: "#A09FFF", //#89E882
-            eventTextColor: "#FFF"
+            color: "#3ade57", //#89E882
+            eventTextColor: "#FFF",
           },
         <?php endif; ?>
       <?php } ?>

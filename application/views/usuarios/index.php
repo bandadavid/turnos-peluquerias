@@ -34,3 +34,20 @@ foreach ($css_files as $file) : ?>
         $("#field-hora_fin_dis").prop("type", "time");
     });
 </script>
+
+
+<style>
+    .bg-danger {
+        color: white !important;
+        font-weight: bold;
+        background-color: #e85759 !important;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .bg-success {
+        color: white !important;
+        font-weight: bold;
+        background-color: #008c4d !important;
+        border-radius: 10px 10px 0px 0px;
+    }
+</style>

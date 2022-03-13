@@ -11,6 +11,9 @@ class Disponibilidades extends CI_Controller
         $this->load->library('Grocery_CRUD'); //cargando crud
         $this->load->model('usuario');
         $this->load->model('disponibilidad');
+        if (!$this->session->userdata("Conectad0")) {
+            redirect("security/logout");
+        }
     }
 
     public function index()

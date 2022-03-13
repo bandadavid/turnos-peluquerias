@@ -32,7 +32,7 @@ a {
 a:hover,
 a:active,
 a:focus {
-	color: #e64853;
+	color: #000;
 	outline: none;
 	text-decoration: none;
 }
@@ -51,7 +51,7 @@ a:focus {
 .back-to-top {
 	position: fixed;
 	display: none;
-	background: #bb267a;
+	background: #000;
 	color: #ffffff;
 	width: 44px;
 	height: 44px;
@@ -61,12 +61,16 @@ a:focus {
 	right: 15px;
 	bottom: 15px;
 	transition: background 0.5s;
+	border: solid 2px;
+	border-color: #fff;
 	z-index: 9;
 }
 
 .back-to-top:hover {
-	color: #bb267a;
+	color: #000;
 	background: #ffffff;
+	border: solid 2px;
+	border-color: #000;
 }
 
 .back-to-top i {
@@ -83,7 +87,7 @@ a:focus {
 
 .cArriba {
 	text-align: center !important;
-	background: #000000;
+	background: #191919;
 	color: white;
 	padding: 18px;
 }
@@ -91,7 +95,7 @@ a:focus {
 .top-bar {
 	position: relative;
 	height: 90px;
-	background: #bb267a;
+	background: #191919;
 }
 
 .top-bar .logo {
@@ -102,8 +106,7 @@ a:focus {
 
 .top-bar .logo h1 {
 	margin: 0;
-	color: #ffffff;
-	font-size: 60px;
+	color: #fff;
 	line-height: 60px;
 	font-weight: 700;
 	text-align: center;
@@ -168,7 +171,7 @@ a:focus {
 /**********************************/
 .nav-bar {
 	position: relative;
-	background: #bb267a;
+	background: #fff;
 	transition: 0.3s;
 }
 
@@ -180,13 +183,13 @@ a:focus {
 	position: fixed;
 	top: 0;
 	width: 100%;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 2px 5px rgb(0 0 0 / 93%);
 	z-index: 999;
 }
 
 .nav-bar .navbar {
 	height: 100%;
-	background: #000000 !important;
+	background: #fff !important;
 }
 
 .navbar-dark .navbar-nav .nav-link,
@@ -194,12 +197,12 @@ a:focus {
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
 	padding: 10px 10px 8px 10px;
-	color: #ffffff;
+	color: #191919;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
-	color: #bb267a;
+	color: #191919;
 	transition: none;
 }
 
@@ -225,6 +228,8 @@ a:focus {
 @media (min-width: 992px) {
 	.nav-bar {
 		padding: 0 75px;
+		justify-content: center !important;
+		display: grid;
 	}
 
 	.nav-bar.nav-sticky {
@@ -481,7 +486,7 @@ a:focus {
 }
 
 .section-header p {
-	color: #bb267a;
+	color: #000;
 	font-size: 18px;
 	font-weight: 600;
 	margin-bottom: 5px;
@@ -636,7 +641,7 @@ a:focus {
 }
 
 .about .about-text a.btn:hover {
-	color: #bb267a;
+	color: #000;
 	background: #ffffff;
 	border: solid 5px black;
 }
@@ -2056,7 +2061,7 @@ a:focus {
 	position: relative;
 	margin-top: 45px;
 	padding-top: 90px;
-	background: #000000;
+	background: #191919;
 	color: #ffffff;
 }
 
@@ -2214,7 +2219,7 @@ a:focus {
 }
 
 .footer .copyright p a {
-	color: #bb267a;
+	color: #fff;
 	font-weight: 500;
 	letter-spacing: 1px;
 }

@@ -24,20 +24,26 @@ class Reservas extends CI_Controller
         $reservas->set_theme('datatables'); //definiendo al aspeto grafico
         $reservas->set_relation('fk_codigo_ser', 'servicios', 'nombre_ser');
         $reservas->columns('codigo_res', 'fecha_hora_inicio_res', 'apellido_res', 'nombre_res', 'celular_res', 'fk_codigo_ser', 'estado_res');
-        $reservas->display_as('codigo_res', '#');
+        $reservas->display_as('codigo_res', 'Código');
         $reservas->display_as('apellido_res', 'Apellido');
         $reservas->display_as('nombre_res', 'Nombre');
         $reservas->display_as('celular_res', 'Celular');
         $reservas->display_as('estado_res', 'Estado');
         $reservas->display_as('fk_codigo_ser', 'Servicio');
-
+        //$reservas->order_by('estado_res', 'desc');
 
         $reservas->set_language("spanish");
         $reservas->set_theme("flexigrid");
 
-        // $reservas->callback_column('estado_res', array($this, 'cambiarColorCelda'));
+        $reservas->callback_column('estado_res', array($this, 'changeColorRow'));
+
+        //$reservas->callback_column('Whatsapp', array($this, 'apiWhatsapp'));
+
+        $reservas->fields('apellido_res', 'nombre_res', 'celular_res', 'estado_res');
 
         $reservas->unset_clone();
+
+
         $reservas->field_type('estado_res', 'dropdown', array("ACTIVO" => "ACTIVO", "FINALIZADO" => "FINALIZADO"));
 
         $output = $reservas->render();
@@ -47,10 +53,14 @@ class Reservas extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function cambiarColorCelda($value, $row)
+    /*public function apiWhatsapp($value, $row)
+    {
+        return "<div class='whatsapp'><a target='_blank' href='https://api.whatsapp.com/send?phone=593" . $row->celular_res . "&text=Saludos%20le%20escribo%20para...'><i class='fab fa-whatsapp-square'></i></a></div>";
+    }*/
+
+    public function changeColorRow($value, $row)
     {
         return "<div class='" . ($value == 'ACTIVO' ? 'bg-success' : 'bg-danger') . "'>$value</div>";
-        //return '<span style="background:red; color: #fff;"><span>' . $row->estado_res;
     }
 
     public function formulario()
