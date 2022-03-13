@@ -187,7 +187,7 @@
           <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav mr-auto">
               <a href="<?php echo site_url(); ?>" id="menu_inicio" class="nav-item nav-link"><i class="fa fa-home"></i>&nbsp;&nbsp;Inicio&nbsp;&nbsp;</a>
-              <a href="<?php echo site_url(); ?>/reservas/calendario" id="calendario" class="nav-item nav-link"><i class="fas fa-calendar-check"></i>&nbsp;&nbsp;Calendario De Turnos&nbsp;&nbsp;</a>
+              <a href="<?php echo site_url(); ?>/reservas/calendario" id="calendario" class="nav-item nav-link"><i class="fas fa-calendar-check"></i>&nbsp;&nbsp;TURNOS AGENDADOS&nbsp;&nbsp;</a>
 
               <?php if ($this->session->userdata('Conectad0')) : ?>
                 <?php if ($this->session->userdata('Conectad0')->perfil_usu == "ADMINISTRADOR") : ?>

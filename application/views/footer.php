@@ -6,10 +6,11 @@
     <div class="row">
       <div class="col-md-12 text-center">
         <p>&copy;
-          <a href="#" target="_blank">STYLO'S PELUQUERIA
+          <a href="#">DESARROLADO POR DAVID BANDA
             <br>
             2022
           </a>
+
         </p>
       </div>
     </div>
@@ -43,6 +44,10 @@
 
   .fc-more-cell {
     text-align: center;
+  }
+
+  #admin {
+    color: #98a4de;
   }
 </style>
 

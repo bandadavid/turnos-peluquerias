@@ -9,7 +9,6 @@ class Security extends CI_Controller
         parent::__construct();
         $this->load->model('usuario');
         // $this->load->model('evento');
-
     }
 
     public function login()

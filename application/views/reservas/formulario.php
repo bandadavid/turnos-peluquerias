@@ -158,7 +158,7 @@ $turnosDisponibles = array_values(array_unique($turnosDisponibles));
 
 <script type="text/javascript">
   var listadoEventos = [
-    <?php if (sizeof($turnosDisponibles) > 0) : ?>
+    <?php if (sizeof($turnosDisponibles) > 0) { ?>
       <?php for ($i = 0; $i < sizeof($turnosDisponibles); $i++) { ?>
         <?php $solicitudExistente = $CI->reserva->obtenerReservaPorFechaHora($turnosDisponibles[$i]); ?>
         <?php if ($turnosDisponibles[$i] > $fechaHoraHoy || $turnosDisponibles[$i] < $fechaHoraHoy && !$solicitudExistente) : ?>
@@ -172,7 +172,9 @@ $turnosDisponibles = array_values(array_unique($turnosDisponibles));
           },
         <?php endif; ?>
       <?php } ?>
-    <?php endif; ?>
+    <?php } else { ?>
+    <?php $this->session->set_flashdata("error", "No hay turnos disponibles, intentalo mas tarde.");
+    } ?>
   ];
 
   $('#calendar').fullCalendar({

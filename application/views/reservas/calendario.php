@@ -5,7 +5,7 @@
 <br>
 <div class="row">
   <div class="col-md-12 text-center">
-    <h3><b>CALENDARIO DE TURNOS</b></h3>
+    <h3><b>TURNOS AGENDADOS</b></h3>
   </div>
 </div>
 <br>
@@ -106,7 +106,7 @@
       <?php foreach ($solicitudes->result() as $solicitud) : ?>
         <?php if ($solicitud->estado_res == "ACTIVO") : ?> {
             id: '<?php echo $solicitud->codigo_res; ?>',
-            title: 'Turno agendado para <?php echo $solicitud->apellido_res; ?> <?php echo $solicitud->nombre_res; ?>',
+            title: 'Turno agendado por <?php echo $solicitud->apellido_res; ?> <?php echo $solicitud->nombre_res; ?>',
             start: '<?php echo $solicitud->fecha_hora_inicio_res; ?>',
             end: '<?php echo $solicitud->fecha_hora_inicio_res; ?>',
             color: "#9f1815",
