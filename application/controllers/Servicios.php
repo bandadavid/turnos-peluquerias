@@ -33,6 +33,7 @@ class Servicios extends CI_Controller
         $reservas->display_as('descripcion_ser', 'Descripcion');
         $reservas->display_as('precio_ser', 'Precio');
         $reservas->set_field_upload('foto_ser', 'uploads');
+        $reservas->fields('nombre_ser', 'descripcion_ser', 'precio_ser', 'foto_ser');
         $reservas->set_language("spanish");
         $reservas->set_theme("flexigrid");
 

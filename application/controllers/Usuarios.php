@@ -42,6 +42,7 @@ class Usuarios extends CI_Controller
         $usuarios->callback_before_insert(array($this, 'encrypt_password_callback'));
 
         $usuarios->callback_column('estado_usu', array($this, 'cambiarColorCelda'));
+
         if ($usuarios->getState() != "add") {
             $usuarios->field_type("password_usu", "hidden");
         }
