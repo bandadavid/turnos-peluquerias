@@ -2065,6 +2065,16 @@ a:focus {
 	color: #ffffff;
 }
 
+@media (max-width: 1980px) {
+	.footer {
+		position: relative;
+		margin-top: 45px;
+		padding-top: 90px;
+		background: #191919;
+		color: #ffffff;
+	}
+}
+
 .footer .footer-contact,
 .footer .footer-link,
 .footer .newsletter {
