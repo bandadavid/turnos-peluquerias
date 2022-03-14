@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-12 text-center">
         <p>&copy;
-          <a href="#">DESARROLADO POR DAVID BANDA
+          <a target="_blank" href="https://www.youtube.com/channel/UCBXzVk8wvQnBw_EDoalcWLw">DESARROLADO POR DAVID BANDA
             <br>
             2022
           </a>

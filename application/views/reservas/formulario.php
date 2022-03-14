@@ -146,10 +146,6 @@ $turnosDisponibles = array_values(array_unique($turnosDisponibles));
             </div>
           </div>
         </div>
-        <!-- <div class="modal-footer text-center">
-
-
-            </div> -->
       </div>
 
     </div>
@@ -208,9 +204,6 @@ $turnosDisponibles = array_values(array_unique($turnosDisponibles));
 
       //alert("dayClick");
     }
-
-
-
   });
 </script>
 
@@ -236,45 +229,5 @@ $turnosDisponibles = array_values(array_unique($turnosDisponibles));
         minlength: 'Datos inválidos'
       }
     },
-    // submitHandler: function(form) {
-    //   var resultado = parseInt("<?php echo $resultado; ?>");
-    //   var resultadoIngresado = parseInt($("#resultado").val());
-    //   //alert(resultado);
-    //   //alert(resultadoIngresado);
-    //   if (resultado == resultadoIngresado) {
-    //     mostrarCarga();
-    //     form.submit();
-    //     return true;
-    //   } else {
-    //     toastr.error("Validación de Seguridad Incorrecta. Por favor sume las cantidades.");
-    //   }
-    //   ocultarCarga();
-    // }
-    /*submitHandler:function(form){
-      toastr.success("Enviando solicitud de reunión");
-      $("#btn-solicitar").fadeOut();
-      $("#btn-solicitar").append("<i class='fa fa-spin fa-spinner'></i>");
-      $("#frm_solicitar_reunion").submit();
-      $.ajax({
-        type:"post",
-        url:'<?php echo site_url('reservas/validarSolicitudDiaria'); ?>',
-        data:{
-          'cedula_sol':$("#cedula_sol").val(),
-          'fecha':$("#fecha_hora_inicio_sol").val(),
-        },
-        success:function(data){
-          var objeto=JSON.parse(data);
-          if(objeto.estado=="ok"){
-            $("#frm_solicitar_reunion").submit();
-            toastr.success("Enviando solicitud de reunión");
-            $("#btn-solicitar").fadeOut();
-            $("#btn-solicitar").append("<i class='fa fa-spin fa-spinner'></i>");
-          }else{
-            toastr.error("Estimado usuario, usted ya tiene agendada una reunión para el dia solicitado.");
-          }
-        }
-      });
-
-    }*/
   });
 </script>
