@@ -11,15 +11,15 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="<?php echo base_url(); ?>/assets/imagenes/f2.jpg" alt="Carousel Image">
+            <img src="<?php echo base_url(); ?>/assets/template/img/carousel-1.jpg" alt="Carousel Image">
         </div>
 
         <div class="carousel-item">
-            <img src="<?php echo base_url(); ?>/assets/imagenes/f3.jpg" alt="Carousel Image">
+            <img src="<?php echo base_url(); ?>/assets/template/img/carousel-2.jpg" alt="Carousel Image">
         </div>
 
         <div class="carousel-item">
-            <img src="<?php echo base_url(); ?>/assets/imagenes/f4.jpg" alt="Carousel Image">
+            <img src="<?php echo base_url(); ?>/assets/template/img/carousel-3.jpg" alt="Carousel Image">
         </div>
     </div>
 
@@ -42,12 +42,12 @@
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-6">
                 <div class="about-img">
-                    <img src="<?php echo base_url(); ?>/assets/imagenes/f1.jpeg" alt="Image">
+                    <img src="<?php echo base_url(); ?>/assets/template/img/team-4.jpg" alt="Image">
                 </div>
             </div>
             <div class="col-lg-7 col-md-6">
                 <div class="section-header text-left">
-                    <p>Bienvenidos a Stylo's Peluquería</p>
+                    <p>Bienvenidos al Sistema de Turnos</p>
                     <h2>10 Años de Experiencia</h2>
                 </div>
                 <div class="about-text">
@@ -55,7 +55,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi.
                         Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
                     </p>
-                    <a class="btn" href="">Agendar Cita</a>
+                    <a class="btn" href="<?php echo site_url(); ?>/reservas/formulario">Agendar Cita</a>
                 </div>
             </div>
         </div>
