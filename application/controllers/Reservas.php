@@ -39,7 +39,7 @@ class Reservas extends CI_Controller
 
         //$reservas->callback_column('Whatsapp', array($this, 'apiWhatsapp'));
 
-        $reservas->fields('apellido_res', 'nombre_res', 'celular_res', 'estado_res');
+        $reservas->fields('apellido_res', 'nombre_res', 'fecha_hora_inicio_res', 'celular_res', 'fk_codigo_ser');
 
         $reservas->unset_clone();
 

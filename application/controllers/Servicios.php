@@ -27,13 +27,12 @@ class Servicios extends CI_Controller
         $reservas->set_subject('Servicios');
         $reservas->set_table('servicios'); //estableciendo la tabla de l BDD
         $reservas->set_theme('datatables'); //definiendo al aspeto grafico
-        $reservas->columns('codigo_ser', 'nombre_ser', 'descripcion_ser', 'precio_ser', 'foto_ser');
+        $reservas->columns('codigo_ser', 'nombre_ser', 'descripcion_ser', 'foto_ser');
         $reservas->display_as('codigo_ser', '#');
         $reservas->display_as('nombre_ser', 'Nombre');
         $reservas->display_as('descripcion_ser', 'Descripcion');
-        $reservas->display_as('precio_ser', 'Precio');
         $reservas->set_field_upload('foto_ser', 'uploads');
-        $reservas->fields('nombre_ser', 'descripcion_ser', 'precio_ser', 'foto_ser');
+        $reservas->fields('nombre_ser', 'descripcion_ser', 'foto_ser');
         $reservas->set_language("spanish");
         $reservas->set_theme("flexigrid");
 
